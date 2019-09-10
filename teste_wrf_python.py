@@ -44,6 +44,11 @@ m.drawcoastlines()
 m.drawcountries()
 m.drawstates()
 m.drawmapboundary(fill_color='#46bcec') #comentar linha caso queira apenas os dados do continente 
+
+m.drawparallels(np.arange(-31.,-24.,1),labels=[1,0,0,0],linewidth=0.0)
+# draw meridians
+m.drawmeridians(np.arange(-56.,-47.,1),labels=[0,0,0,1],linewidth=0.0)
+
 lon, lat = np.meshgrid(lons, lats)
 xi, yi = m(lon, lat)
 
