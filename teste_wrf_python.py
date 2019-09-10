@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Aug 29 18:23:16 2019
-
 @author: lucas
 """
 
@@ -11,14 +9,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap
 
-dataset = Dataset('/home/lucas/Downloads/wrf_ensemble_m1_d02_2019070718.nc')
+dataset = Dataset('/home/lucas/Downloads/wrf_ensemble_m1_d02.nc')
 
 lats = dataset.variables['lat'][:]  # extract/copy the data
 lons = dataset.variables['lon'][:]
 time = dataset.variables['time'][:]
 air = dataset.variables['t2'][:]  # shape is time, lat, lon as shown above
 
-#quanod longitude for maior que 180 devemos diminuir 360! if (lons > 180):
+#quando longitude for maior que 180 devemos diminuir 360 if (lons > 180):
 lons = lons-360
 
 print(time.shape)# mostra quantas rodadas tem. Vai aparecer 49 para esse file!
@@ -46,10 +44,6 @@ m.drawcoastlines()
 m.drawcountries()
 m.drawstates()
 m.drawmapboundary(fill_color='#46bcec') #comentar linha caso queira apenas os dados do continente 
-#m.fillcontinents(color = 'white',lake_color='#46bcec')
-# Because our lon and lat variables are 1D,
-# use meshgrid to create 2D arrays
-# Not necessary if coordinates are already in 2D arrays.
 lon, lat = np.meshgrid(lons, lats)
 xi, yi = m(lon, lat)
 
